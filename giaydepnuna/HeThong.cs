@@ -49,44 +49,73 @@ namespace giaydepnuna
         private void btnnv_Click(object sender, EventArgs e)
         {
             OpendChildForm(new NhanVien());
-            trangchu.Text = btnnv.Text;
+            trangchu.Text = "Quản Lý Nhân Viên";
         }
 
         private void btnncc_Click(object sender, EventArgs e)
         {
             OpendChildForm(new NCC());
-            trangchu.Text = btnncc.Text;
+            trangchu.Text = "Quản Lý Nhà Cung Cấp";
 
         }
 
         private void btnnhap_Click(object sender, EventArgs e)
         {
-            OpendChildForm(new PhieuNhap());
-            trangchu.Text = btnnhap.Text;
+            OpendChildForm(new PNHang());
+            trangchu.Text = "Quản Lý Phiếu Nhập";
         }
 
         private void btnsp_Click(object sender, EventArgs e)
         {
             OpendChildForm(new SanPham());
-            trangchu.Text = btnsp.Text;
+            trangchu.Text = "Quản Lý Sản Phẩm";
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             OpendChildForm(new HoaDon());
-            trangchu.Text = btnhoadon.Text;
+            trangchu.Text ="Quản Lý Hóa Đơn";
         }
 
         private void btncaidat_Click(object sender, EventArgs e)
         {
             OpendChildForm(new CaiDat());
-            trangchu.Text = btncaidat.Text;
+            trangchu.Text ="Đổi Mật Khẩu";
         }
 
         private void btnluong_Click(object sender, EventArgs e)
         {
             OpendChildForm(new Luong());
-            trangchu.Text = btnluong.Text;
+            trangchu.Text = "Bảng Lương Nhân Viên";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Dangnhap frm=new Dangnhap();
+            frm.Show();
+            this.Hide();
+        }
+
+        private void pictureBox10_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void trangchu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            HeThong frm=new HeThong();
+            frm.Show();
+            this.Hide();
         }
     }
 }

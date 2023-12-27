@@ -99,16 +99,31 @@ namespace giaydepnuna
             getData();
         }
 
+
+        public void ChangeName()
+        {
+            dgvsp.Columns[0].HeaderText = "ID SP";
+            dgvsp.Columns[1].HeaderText = "Tên NV";
+            dgvsp.Columns[2].HeaderText = "Số Lượng";
+            dgvsp.Columns[3].HeaderText = "Loại";
+            dgvsp.Columns[4].HeaderText = "Kích Cỡ";
+            dgvsp.Columns[5].HeaderText = "Ghi Chú";
+            dgvsp.Columns[6].HeaderText = "Giá";
+            dgvsp.Columns[7].HeaderText = "Id NCC";
+           
+        }
+
         private void SanPham_Load(object sender, EventArgs e)
         {
             getData();
             getidncc();
+            ChangeName();
 
         }
 
         private void btnsua_Click(object sender, EventArgs e)
         {
-            string query = string.Format("update giaydep set tensp='{1}',soluong='{2}',loai='{3}',kichco='{4}',ghichu='{5}',gia='{6}',idncc='{7}' where idsp='{0}'",
+            string query = string.Format("update giaydep set tensp=N'{1}',soluong='{2}',loai=N'{3}',kichco='{4}',ghichu=N'{5}',gia='{6}',idncc='{7}' where idsp='{0}'",
                txtsp.Text,
                txttensp.Text,
                txtsl.Text,
@@ -131,7 +146,9 @@ namespace giaydepnuna
 
         private void button6_Click(object sender, EventArgs e)
         {
-           
+            HeThong frm= new HeThong();
+            frm.Show();
+            this.Hide();
         }
 
         private void btnxoa_Click(object sender, EventArgs e)
@@ -154,6 +171,46 @@ namespace giaydepnuna
             string query = string.Format("select *from giaydep where tensp  like '%{0}%'", txttk.Text);
             DataTable da = kn.laydulieu(query);
             dgvsp.DataSource = da;
+        }
+
+        private void idncc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dgvsp.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel.ApplicationClass MExcel = new Microsoft.Office.Interop.Excel.ApplicationClass();
+                MExcel.Application.Workbooks.Add(Type.Missing);
+                for (int i = 1; i < dgvsp.Columns.Count + 1; i++)
+                {
+                    MExcel.Cells[1, i] = dgvsp.Columns[i - 1].HeaderText;
+                }
+                for (int i = 0; i < dgvsp.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dgvsp.Columns.Count; j++)
+                    {
+                        if (dgvsp.Rows[i].Cells[j].Value != null)
+                        {
+                            MExcel.Cells[i + 2, j + 1] = dgvsp.Rows[i].Cells[j].Value.ToString();
+                        }
+
+
+                    }
+                }
+                MExcel.Columns.AutoFit();
+                MExcel.Rows.AutoFit();
+                MExcel.Columns.Font.Size = 12;
+                MExcel.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("No records found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
     }
 }

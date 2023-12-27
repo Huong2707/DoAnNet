@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,6 +62,24 @@
     </Compile>
     <Compile Include="Dangnhap.Designer.cs">
       <DependentUpon>Dangnhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoiMKNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoiMKNV.Designer.cs">
+      <DependentUpon>DoiMKNV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoad.Designer.cs">
+      <DependentUpon>FormLoad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDienBanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoDienBanHang.Designer.cs">
+      <DependentUpon>GiaoDienBanHang.cs</DependentUpon>
     </Compile>
     <Compile Include="HeThong.cs">
       <SubType>Form</SubType>
@@ -95,11 +117,11 @@
     <Compile Include="NhanVien.Designer.cs">
       <DependentUpon>NhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="PhieuNhap.cs">
+    <Compile Include="PNHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PhieuNhap.Designer.cs">
-      <DependentUpon>PhieuNhap.cs</DependentUpon>
+    <Compile Include="PNHang.Designer.cs">
+      <DependentUpon>PNHang.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,11 +131,38 @@
     <Compile Include="SanPham.Designer.cs">
       <DependentUpon>SanPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CaiDat.resx">
+      <DependentUpon>CaiDat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dangnhap.resx">
       <DependentUpon>Dangnhap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DoiMKNV.resx">
+      <DependentUpon>DoiMKNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoad.resx">
+      <DependentUpon>FormLoad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoDienBanHang.resx">
+      <DependentUpon>GiaoDienBanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeThongNV.resx">
+      <DependentUpon>HeThongNV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HeThong.resx">
       <DependentUpon>HeThong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoaDon.resx">
+      <DependentUpon>HoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Luong.resx">
+      <DependentUpon>Luong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NCC.resx">
       <DependentUpon>NCC.cs</DependentUpon>
@@ -121,8 +170,8 @@
     <EmbeddedResource Include="NhanVien.resx">
       <DependentUpon>NhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PhieuNhap.resx">
-      <DependentUpon>PhieuNhap.cs</DependentUpon>
+    <EmbeddedResource Include="PNHang.resx">
+      <DependentUpon>PNHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -136,6 +185,9 @@
     </Compile>
     <EmbeddedResource Include="SanPham.resx">
       <DependentUpon>SanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

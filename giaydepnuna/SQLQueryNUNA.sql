@@ -1,6 +1,6 @@
 Create database NUNADOTNET
-
 CREATE TABLE NHANVIEN(
+
 IDNV NVARCHAR(15) NOT NULL PRIMARY KEY,
 HOTEN NVARCHAR(40),
 DCHI NVARCHAR(50),
@@ -24,9 +24,13 @@ ACCOUNT NVARCHAR(30) NOT NULL,
 PRIMARY KEY(IDNV, ACCOUNT),
 PASSWORK NVARCHAR(30))
 
+select*from nguoidung where account like '%a%'
+
 insert into nguoidung
 values('NV01','huong','123'),
 		('NV02','huong','111')
+		insert into nguoidung
+values('NV01','admin','123')
 SELECT ACCOUNT,PASSWORK from nguoidung
 
 CREATE TABLE LUONG(

@@ -26,6 +26,7 @@ namespace giaydepnuna
             string query = "select* from nhanvien";
             DataTable dt = kn.laydulieu(query);
             dgvnv.DataSource = dt;
+            
         }
         public void ClearText()
         {
@@ -41,7 +42,7 @@ namespace giaydepnuna
 
         private void btnthem_Click(object sender, EventArgs e)
         {
-            string query = string.Format("insert into nhanvien values('{0}',N'{1}',N'{2}','{3}','{4}','{5}',N'{6}')",
+            string query = string.Format("insert into nhanvien values('{0}',N'{1}','{2}','{3}','{4}',N'{5}','{6}')",
                txtid.Text,
                txtten.Text,
                txtdc.Text,
@@ -66,11 +67,13 @@ namespace giaydepnuna
             ClearText();
             getData();
         }
-
+      
         private void NhanVien_Load(object sender, EventArgs e)
         {
             getData();
+           ChangeName();
         }
+      
 
         private void btnsua_Click(object sender, EventArgs e)
         {
@@ -93,7 +96,19 @@ namespace giaydepnuna
                 MessageBox.Show("Thất bại");
             }
         }
+        public void ChangeName()
+        {
 
+
+            dgvnv.Columns[0].HeaderText = "ID Nhân Viên";
+            dgvnv.Columns[1].HeaderText = "Họ Tên";
+            dgvnv.Columns[2].HeaderText = "Địa chỉ";
+            dgvnv.Columns[3].HeaderText = "SĐT";
+            dgvnv.Columns[4].HeaderText = "Ngày Sinh";
+            dgvnv.Columns[5].HeaderText = "Ngày Vào Làm";
+            dgvnv.Columns[6].HeaderText = "Chức Vụ";
+
+        }
         private void btnxoa_Click(object sender, EventArgs e)
         {
             string query = string.Format("delete nhanvien where idnv='{0}'", txtid.Text);
@@ -111,7 +126,9 @@ namespace giaydepnuna
 
         private void btnthoat_Click(object sender, EventArgs e)
         {
-            Close();
+            HeThong frm=new HeThong();
+            frm.Show();
+            this.Hide();
         }
 
         private void dgvnv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -135,6 +152,39 @@ namespace giaydepnuna
             DataTable da = kn.laydulieu(query);
             dgvnv.DataSource = da;
             txttimkiem.Text = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dgvnv.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel.ApplicationClass MExcel = new Microsoft.Office.Interop.Excel.ApplicationClass();
+                MExcel.Application.Workbooks.Add(Type.Missing);
+                for (int i = 1; i < dgvnv.Columns.Count + 1; i++)
+                {
+                    MExcel.Cells[1, i] = dgvnv.Columns[i - 1].HeaderText;
+                }
+                for (int i = 0; i < dgvnv.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dgvnv.Columns.Count; j++)
+                    {
+                        if (dgvnv.Rows[i].Cells[j].Value != null)
+                        {
+                            MExcel.Cells[i + 2, j + 1] = dgvnv.Rows[i].Cells[j].Value.ToString();
+                        }
+
+
+                    }
+                }
+                MExcel.Columns.AutoFit();
+                MExcel.Rows.AutoFit();
+                MExcel.Columns.Font.Size = 12;
+                MExcel.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("No records found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
     
